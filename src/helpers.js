@@ -8,24 +8,37 @@ export const createStage = () => {
 
 export const checkCollision = (player, stage, {x: moveX, y: moveY}) => {
     const stageHeight = stage.length;
-    const stageWidth = stage.width;
+    const stageWidth = stage[0].length;
+    const playerHeight = player.tetrimino.length;
+    //const playerWidth = player.tetrimino.shape[0].length;
 
-    for (let y = 0; y < player.tetrimino.length; y++) {
-        for (let x = 0; x < player.tetrimino[y].length; x++) {
-            if (player.tetrimino[y][x] !== 0) {
-                let newPosY = y + player.pos.y + moveY;
-                let newPosX = x + player.pos.x + moveX;
+    for (let r = 0; r < playerHeight; r++) {
+        for (let c = 0; c < playerHeight; c++) {
 
+            // Check if the cell is an actual tetrimino piece and not empty space
+            if (player.tetrimino[r][c] !== 0) {
+
+                // The projected moves to be checked
+                const projPosY = r + player.pos.y + moveY;
+                const projPosX = c + player.pos.x + moveX;
+
+                // Check collisions
                 if (
-                    (newPosY < 0 || newPosY > stageHeight) ||
-                    (newPosX < 0 || newPosX > stageWidth) ||
-                    (stage[newPosY][newPosX] !== "clear")
-                    ) {
-                        return true;
-                    }
-            }
-        }
-    };
+                    // Projected position is undefined
+                    (!stage[projPosY] || !stage[projPosY][projPosX]) ||
 
-    return false;
+                    // Projected position would hit the boundaries
+                    //(projPosX < 0 || projPosX >= playerHeight - c || projPosY >= stageHeight - r) ||
+
+                    // Projected position is already occupied
+                    stage[projPosY][projPosX][1] !== "clear"
+                ) {
+                    return true;
+                };
+            };
+        };
+
+        // If this point is reached, no collision was detected
+        return false;
+    };
 };

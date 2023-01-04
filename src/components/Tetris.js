@@ -21,29 +21,49 @@ function Tetris() {
     const startGame = () => {
         setStage(createStage());
         resetPlayer();
+        setGameOver(false);
     }
 
     const drop = (dir) => {
-        if (!checkCollision(player, stage, {x: 0, y: 1}))
-        updatePlayerPos({x: 0, y: 1, collided: false})
+        if (checkCollision(player, stage, {x: 0, y: 1})) {
+
+            if (player.pos.y < 1) {
+                setGameOver(true);
+                setDropTime(null);
+            } 
+            updatePlayerPos({x: 0, y: 0, collided: true});
+
+        } else {
+            updatePlayerPos({x: 0, y: 1, collided: false});
+        }
+        
     };
 
     const dropPlayer = () => {
         drop();
     };
 
+    const movePlayer = (dir) => {    
+        if (!checkCollision(player, stage, {x: dir, y: 0}))
+        updatePlayerPos({x: dir, y: 0, collided: false});
+    };
+
     const move = ({keyCode}) => {
         if (!gameOver) {
-            console.log(keyCode);
             switch (keyCode) {
+
+                // Move left
                 case 37: {
                     movePlayer(-1);
                     break;
                 }
+                // Move right
                 case 39: {
                     movePlayer(1);
                     break;
                 }
+
+                // Drop down
                 case 40: {
                     dropPlayer();
                     break;
@@ -53,11 +73,6 @@ function Tetris() {
                 }
             }
         }
-    };
-
-    const movePlayer = (dir) => {
-        if (!checkCollision(player, stage, {x: dir, y: 0}))
-        updatePlayerPos({x: dir, y: 0, collided: false});
     };
 
     return (

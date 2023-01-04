@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { createStage } from "../helpers";
+import { createStage, STAGE_HEIGHT, STAGE_WIDTH } from "../helpers";
 
 export const useStage = (player, resetPlayer) => {
     const [stage, setStage] = useState(createStage());
@@ -15,8 +15,15 @@ export const useStage = (player, resetPlayer) => {
             // Draw the tetrimino
             player.tetrimino.forEach((row, y) => {
                 row.forEach((value, x) => {
+
+                    // Check if the cell is an actual tetrimino piece and not empty space
                     if (value !== 0) {
-                        newStage[y + player.pos.y][x + player.pos.x] = [
+                        const newY = y + player.pos.y >= STAGE_HEIGHT ? STAGE_HEIGHT - y : y + player.pos.y
+                        console.log(newY);
+
+                        const newX = Math.abs(x + player.pos.x >= STAGE_WIDTH ? STAGE_WIDTH - x : x + player.pos.x)
+                        
+                        newStage[newY][x + player.pos.x] = [
                             value,
                             `${player.collided ? "merged" : "clear"}`
                         ]
@@ -31,8 +38,9 @@ export const useStage = (player, resetPlayer) => {
 
             return newStage;
         };
-
-        setStage(prev => updateStage(prev));
+        
+        let next = updateStage(stage);
+        setStage(prev => next);
 
     }, [player, resetPlayer]);
 
