@@ -17,6 +17,9 @@ import { StyledTetris } from './styles/StyledTetris';
 import Stage from './Stage';
 import DisplayContainer from './DisplayContainer';
 
+import NavBar from "./NavBar"
+import HighScoreForm from "./HighScoreForm";
+
 function Tetris() {
 
   // States
@@ -164,8 +167,10 @@ function Tetris() {
           handleStartGame={handleStartGame}
         />
       </StyledTetris>
+      <HighScoreForm />
     </StyledTetrisWrapper>
   );
 };
+
 
 export default Tetris;
