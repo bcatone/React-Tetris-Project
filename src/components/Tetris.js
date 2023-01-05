@@ -11,6 +11,9 @@ import Stage from "./Stage";
 import Display from "./Display";
 import StartButton from "./StartButton";
 
+import NavBar from "./NavBar"
+import HighScoreForm from "./HighScoreForm";
+
 function Tetris() {
     const [dropTime, setDropTime] = useState(null);
     const [gameOver, setGameOver] = useState(false);
@@ -62,11 +65,13 @@ function Tetris() {
 
     return (
         <StyledTetrisWrapper role="button" tabIndex="0" onKeyDown={e => move(e)}>
+            <NavBar />
             <StyledTetris>
                 <Stage stage={stage} />
                 <aside>
                     {gameOver ? (
-                        <Display gameOver={gameOver} text="Game Over" />
+                        <Display gameOver={gameOver} text="Game Over" />,
+                        <Display />
                     ) : (
                         <div>
                             <Display text="Score" />
@@ -75,9 +80,11 @@ function Tetris() {
                         </div>
                     )}
                     <StartButton callback={startGame}/>
+                    <HighScoreForm />
                 </aside>
-
+           
             </StyledTetris>
+           
         </StyledTetrisWrapper>
     );
 }

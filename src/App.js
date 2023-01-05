@@ -1,12 +1,38 @@
-import React, { useState } from "react";
-import Tetris from "./components/Tetris";
+import React, { useState, useEffect } from "react";
+import Tetris from "./components/Tetris"
+import Settings from "./components/Settings"
+import HighScores from "./components/HighScore"
+import NavBar from "./components/NavBar"
+import HighScoreSorter from "./components/HighScoresSorter"
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 
-function App() {
-  const [page, setPage] = useState("Tetris");
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Tetris />,
+  },
+  {
+    path: "/settings",
+    element: <Settings />,
+  },
+    {
+    path: "/highscores",
+    element: <HighScoreSorter /> ,
+  },
+]);
 
+
+
+function App() {      
   return (
-    <Tetris />
-  )
+    <div>
+        <RouterProvider router={router} />
+    </div>
+  );
 }
 
 export default App;
+
