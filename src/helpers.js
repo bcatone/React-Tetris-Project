@@ -1,44 +1,44 @@
 export const STAGE_WIDTH = 12;
 export const STAGE_HEIGHT = 20;
 
-export const createStage = () => {
-    return Array.from(Array(STAGE_HEIGHT)).fill(Array(STAGE_WIDTH).fill([0, "clear"]));
-    
-};
+export const createStage = () =>
+  Array.from(Array(STAGE_HEIGHT), () => Array(STAGE_WIDTH).fill([0, 'clear']));
 
-export const checkCollision = (player, stage, {x: moveX, y: moveY}) => {
-    const stageHeight = stage.length;
-    const stageWidth = stage[0].length;
-    const playerHeight = player.tetrimino.length;
-    //const playerWidth = player.tetrimino.shape[0].length;
+export const checkCollision = (player, stage, { x: moveX, y: moveY }) => {
+  
+  // All of the tetriminos have square arrays
+  const playerSize = player.tetrimino.length;
 
-    for (let r = 0; r < playerHeight; r++) {
-        for (let c = 0; c < playerHeight; c++) {
+  for (let r = 0; r < playerSize; r++) {
+    for (let c = 0; c < playerSize; c++) {
 
-            // Check if the cell is an actual tetrimino piece and not empty space
-            if (player.tetrimino[r][c] !== 0) {
+      // Check that the tetrimino cell is not empty
+      if (player.tetrimino[r][c] !== 0) {
 
-                // The projected moves to be checked
-                const projPosY = r + player.pos.y + moveY;
-                const projPosX = c + player.pos.x + moveX;
+        // Calculate projected position
+        const projPos = {x: c + player.pos.x + moveX, y: r + player.pos.y + moveY};
 
-                // Check collisions
-                if (
-                    // Projected position is undefined
-                    (!stage[projPosY] || !stage[projPosY][projPosX]) ||
+        // Make sure position is inside the stage
+        if (projPos.y < 0 || projPos.y >= STAGE_HEIGHT) {
+          return true;
+        }
 
-                    // Projected position would hit the boundaries
-                    //(projPosX < 0 || projPosX >= playerHeight - c || projPosY >= stageHeight - r) ||
+        if (projPos.x < 0 || projPos.x >= STAGE_WIDTH) {
+          return true;
+        }
 
-                    // Projected position is already occupied
-                    stage[projPosY][projPosX][1] !== "clear"
-                ) {
-                    return true;
-                };
-            };
-        };
+        if (!stage[projPos.y][projPos.x]) {
+          return true;
+        }
 
-        // If this point is reached, no collision was detected
-        return false;
-    };
+        if (stage[projPos.y][projPos.x][1] !== "clear") {
+          return true;
+        }
+      }
+    }
+
+  }
+
+  // If this point is reached, no collision was detected.
+  return false;
 };

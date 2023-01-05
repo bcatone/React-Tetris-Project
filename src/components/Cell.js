@@ -5,6 +5,7 @@ import { TETRIMINOS } from "../tetriminos";
 
 function Cell({type}) {
      return (
+        // Passes the tetrimino color into the StyledCell component to color the cell
          <StyledCell type={type} color={TETRIMINOS[type].color} />
      )
 };
