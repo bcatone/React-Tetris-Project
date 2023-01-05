@@ -1,3 +1,5 @@
+// Custom hook by Dan Abramov
+
 import { useEffect, useRef } from 'react';
 
 // REFACTOR THIS LATER!
