@@ -20,7 +20,7 @@ import DisplayContainer from './DisplayContainer';
 import NavBar from "./NavBar"
 import HighScoreForm from "./HighScoreForm";
 
-function Tetris() {
+function Tetris({settings}) {
 
   // States
   const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer();
@@ -29,9 +29,11 @@ function Tetris() {
   const [dropTime, setDropTime] = useState(null);
   const [score, setScore, rows, setRows, level, setLevel] = useGameStatus(rowsCleared);
 
+  console.log(settings.baseSpeed);
+
   // Game Statuses
   const handleStartGame = () => {
-    setDropTime(1000);
+    setDropTime(settings.baseSpeed);
     setStage(createStage());
     resetPlayer();
     setScore(0);
@@ -46,7 +48,7 @@ function Tetris() {
   }, dropTime);
 
   const activateDropTime = (modifier) => {
-    setDropTime(1000 / (level) + modifier);
+    setDropTime(settings.baseSpeed / level + modifier);
   };
 
   const handleNextLevel = () => {
@@ -151,6 +153,8 @@ function Tetris() {
   };
 
   return (
+    <div>
+      <NavBar />
     <StyledTetrisWrapper
       role="button"
       tabIndex="0"
@@ -167,8 +171,8 @@ function Tetris() {
           handleStartGame={handleStartGame}
         />
       </StyledTetris>
-      <HighScoreForm />
     </StyledTetrisWrapper>
+    </div>
   );
 };
 
