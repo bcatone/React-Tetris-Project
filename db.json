@@ -1,14 +1,19 @@
 {
   "Highscores": [
     {
-      "name": "alexa",
-      "highscore": "10000",
+      "name": "Alexa",
+      "highscore": 400,
       "id": 1
     },
     {
-      "name": "Brittany",
-      "highscore": "1000000000",
+      "name": "Alexa",
+      "highscore": 640,
       "id": 2
+    },
+    {
+      "name": "alexa",
+      "highscore": 0,
+      "id": 3
     }
   ]
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Custom Hooks
 import { useInterval } from '../hooks/useInterval';
@@ -20,7 +20,7 @@ import DisplayContainer from './DisplayContainer';
 import NavBar from "./NavBar"
 import HighScoreForm from "./HighScoreForm";
 
-function Tetris() {
+function Tetris({settings, handleHighScoreSubmit}) {
 
   // States
   const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer();
@@ -28,10 +28,11 @@ function Tetris() {
   const [gameOver, setGameOver] = useState(false);
   const [dropTime, setDropTime] = useState(null);
   const [score, setScore, rows, setRows, level, setLevel] = useGameStatus(rowsCleared);
+  const [highscoreModalOpen, setHighscoreModalOpen] = useState(false);
 
   // Game Statuses
   const handleStartGame = () => {
-    setDropTime(1000);
+    setDropTime(settings.baseSpeed);
     setStage(createStage());
     resetPlayer();
     setScore(0);
@@ -46,7 +47,7 @@ function Tetris() {
   }, dropTime);
 
   const activateDropTime = (modifier) => {
-    setDropTime(1000 / (level) + modifier);
+    setDropTime(settings.baseSpeed / (level) + modifier);
   };
 
   const handleNextLevel = () => {
@@ -150,7 +151,13 @@ function Tetris() {
     }
   };
 
+  useEffect(() => {
+    setHighscoreModalOpen(gameOver)
+  }, [gameOver])
+
   return (
+    <div>
+    <NavBar />
     <StyledTetrisWrapper
       role="button"
       tabIndex="0"
@@ -165,10 +172,17 @@ function Tetris() {
           rows={rows}
           level={level}
           handleStartGame={handleStartGame}
+          
+        />
+        <HighScoreForm 
+          score={score}
+          isVisable={highscoreModalOpen}
+          close={() => setHighscoreModalOpen(false)} 
+          handleHighScoreSubmit={handleHighScoreSubmit}
         />
       </StyledTetris>
-      <HighScoreForm />
     </StyledTetrisWrapper>
+    </div>
   );
 };
 
