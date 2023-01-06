@@ -63,7 +63,12 @@ function Tetris({settings, handleHighScoreSubmit}) {
 
     // Advance to next level when 10 rows are cleared
     if (rows > (level + 1) * 10) {
-      handleNextLevel();
+      // Increase level number
+    let nextLevel = level + 1;
+    setLevel(nextLevel);
+
+    // Increase player speed
+    activateDropTime(100);
 
       // Drop the player down if no collision is detected
     } else if (!isCollisionDetected(player, stage, { x: 0, y: 1 })) {

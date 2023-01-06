@@ -1,19 +1,23 @@
 import React, { useState } from "react";
 
-function HighScoreForm({score}) {
-    const [name, setName] = useState("")
+function HighScoreForm({score, handleHighScoreSubmit}) {
+    const [name, setName] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        fetch("http://localhost:8000/Highscores", {
-            method: "POST",
-            headers: {
-            "Content-Type": 'application/json',
-            },
-            body: JSON.stringify({name, score})
-        })
-        .then(resp => resp.json())
-        .then(newHighScore => console.log('New High score', newHighScore))
+
+        // Moved this to the App component
+        // fetch("http://localhost:8000/Highscores", {
+        //     method: "POST",
+        //     headers: {
+        //     "Content-Type": 'application/json',
+        //     },
+        //     body: JSON.stringify({name, score})
+        // })
+        // .then(resp => resp.json())
+        // .then(newHighScore => console.log('New High score', newHighScore))
+
+        handleSubmit({name, score});
     }
 
   return (

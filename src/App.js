@@ -32,6 +32,7 @@ function App() {
   const handleHighScoreSubmit = ({newName, newScore}) => {
 
     // Alexa's POST request from the HighScoreForm component
+    // Moved here to meet this requirement: Upon return of json from your POST request, a state update by a setState function is required!
     fetch("http://localhost:8000/Highscores", {
             method: "POST",
             headers: {
