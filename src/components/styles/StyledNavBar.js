@@ -8,7 +8,6 @@ nav {
   left: 0;
   right: 0;
   width: 100%
-  max-height: 20px;
 } 
 
 nav a {

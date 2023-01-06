@@ -14,13 +14,13 @@ import {StyledTetrisWrapper} from './styles/StyledTetrisWrapper';
 import { StyledTetris } from './styles/StyledTetris';
 
 // Child Components
+import NavBar from './NavBar'
 import Stage from './Stage';
 import DisplayContainer from './DisplayContainer';
 
-import NavBar from "./NavBar"
-import HighScoreForm from "./HighScoreForm";
 
-function Tetris({settings}) {
+
+function Tetris({settings, handleHighScoreSubmit}) {
 
   // States
   const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer();
@@ -28,8 +28,6 @@ function Tetris({settings}) {
   const [gameOver, setGameOver] = useState(false);
   const [dropTime, setDropTime] = useState(null);
   const [score, setScore, rows, setRows, level, setLevel] = useGameStatus(rowsCleared);
-
-  console.log(settings.baseSpeed);
 
   // Game Statuses
   const handleStartGame = () => {
@@ -54,7 +52,7 @@ function Tetris({settings}) {
   const handleNextLevel = () => {
     // Increase level number
     let nextLevel = level + 1;
-    setLevel(prev => nextLevel);
+    setLevel(nextLevel);
 
     // Increase player speed
     activateDropTime(100);
@@ -162,13 +160,14 @@ function Tetris({settings}) {
       onKeyUp={onKeyUp}
     >
       <StyledTetris>
-        <Stage stage={stage} />
+        <Stage stage={stage} settings={settings}/>
         <DisplayContainer 
           gameOver={gameOver} 
           score={score}
           rows={rows}
           level={level}
           handleStartGame={handleStartGame}
+          handleHighScoreSubmit={handleHighScoreSubmit}
         />
       </StyledTetris>
     </StyledTetrisWrapper>

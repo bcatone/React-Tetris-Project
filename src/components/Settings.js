@@ -33,7 +33,7 @@ function Settings({settings, handleSubmitSettings}) {
                 <label>Difficulty</label>
                 <select name="baseSpeed" onChange={handleChange}>
                     <option value="1100" >Easy</option>
-                    <option value="1000">Normal</option>
+                    <option value="1000" selected>Normal</option>
                     <option value="500">Hard</option>
                     <option value="50">Insane</option>
                 </select>
@@ -41,6 +41,6 @@ function Settings({settings, handleSubmitSettings}) {
             </form>
         </div>
     );
-}
+};
 
 export default Settings;
