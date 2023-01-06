@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-export const StyledSettings = styled.div`
+export const StyledAbout = styled.p`
+
     display: block;
     text-align: center;
     color: white;
@@ -15,4 +16,5 @@ export const StyledSettings = styled.div`
     a {
     color: grey;
     }
-`;
+    `;
+

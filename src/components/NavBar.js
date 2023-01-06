@@ -11,6 +11,7 @@ function NavBar({ onChangePage }) {
                 <Link to={`/`}>Tetris</Link>
                 <Link to={`/settings`}>Settings</Link>
                 <Link to={`/highscores`}>HighScores</Link>
+                <Link to={`/about`}>About</Link>
             </nav>
         </StyledNavBar>
     );

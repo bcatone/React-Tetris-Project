@@ -1,24 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import NavBar from "./NavBar";
-
 import {StyledSettings} from './styles/StyledSettings';
-
-function Settings() {
-
-
-
+function Settings({settings, handleSubmitSettings}) {
+    const [newSettings, setNewSettings] = useState({...settings});
+    console.log(settings);
+    const handleChange = (e) => {
+        let name = e.target.name;
+        let value = e.target.value;
+        // Difficulty values are stored as integers
+        if (name === "baseSpeed") {
+            value = parseInt(value);
+        };
+        setNewSettings({... newSettings, [name]: value});
+    };
+    const onSubmitSettings = (e) => {
+        e.preventDefault();
+        handleSubmitSettings(newSettings);
+    }
     return (
-        <div className="new-settings-form">
+        <StyledSettings>
             <NavBar />
             <h2>Settings</h2>
-            <form>
-                <input type="text" name="name" placeholder="Players name" />
-                <input type="text" name="image" placeholder="Background Image" />
-                <button type="submit">Customize Game</button>
+            <form onSubmit={onSubmitSettings}>
+                <label>Difficulty</label>
+                <select name="baseSpeed" onChange={handleChange}>
+                    <option value="1100" >Easy</option>
+                    <option value="1000" selected>Normal</option>
+                    <option value="500">Hard</option>
+                    <option value="50">Insane</option>
+                </select>
+                <input type="submit" value="submit" />
             </form>
-        </div>
-
+        </StyledSettings>
     );
-}
-
+};
 export default Settings;

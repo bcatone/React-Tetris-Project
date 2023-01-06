@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledSettings = styled.div`
+export const StyledHighScoreSorter = styled.div`
     display: block;
     text-align: center;
     color: white;

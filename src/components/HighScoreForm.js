@@ -1,32 +1,28 @@
 import React, { useState } from "react";
+import {StyledHighScoreForm} from "./styles/StyledHighScoreForm";
 
-function HighScoreForm( props ) {
+
+function HighScoreForm( {score, handleHighScoreSubmit, isVisable} ) {
     const [name, setName] = useState("")
-    const [highscore, setHighscore] = useState(0)
+    // const {highscore, open, close} = props;
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        fetch("http://localhost:8000/Highscores", {
-            method: "POST",
-            headers: {
-            "Content-Type": 'application/json',
-            },
-            body: JSON.stringify({name, highscore})
-        })
-        .then(resp => resp.json())
-        .then(newHighScore =>  console.log('New High score', newHighScore))
+        handleHighScoreSubmit({name, highscore: score})
     }
 
-
   return (
-    <div>
+    <StyledHighScoreForm style={{display: isVisable ? 'block' : 'none'}}>
       <form onSubmit={handleSubmit}>
+        <p style={{color: 'white'}} >YOUR SCORE: {score}</p>
         <input type="text" name="name" placeholder="Player's name" value={name}  onChange={(e) => setName(e.target.value)}/>
-        <input type="number" name="score" placeholder="HighScore" value={highscore}  onChange={(e) => setHighscore(e.target.value)}/>
+        <br />
         <button type="submit">Add HighScore!</button>
+        {/* <button onClick={handleFormClose}>button</button> */}
       </form>
-    </div>
+      </StyledHighScoreForm>
   );
+
 }
 
 export default HighScoreForm;
