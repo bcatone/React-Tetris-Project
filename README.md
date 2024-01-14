@@ -1,74 +1,31 @@
-# Getting Started with Create React App
+TETRIS GAME CLONE
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This was a collaborative Phase 2 project at Flatiron's Software Engineering Bootcamp and features a clone of the classic game Tetris. 
 
-## Available Scripts
+For this application we utilized React.js to build an interactive UI and complex algorithms to showcase our proficiency in front-end development. 
 
-In the project directory, you can run:
+If you are unfamiliar, the rules of the game are listed below. We hope you enjoy!
 
-### `npm start`
+DEMO
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![Screen Shot 2024-01-14 at 5 20 38 PM](https://github.com/bcatone/React-Tetris-Project/assets/109528561/935b4e27-6ba3-47b2-beb0-41cdd0c91137)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm install -g json-server`
+![Screen Shot 2024-01-14 at 5 25 01 PM](https://github.com/bcatone/React-Tetris-Project/assets/109528561/37262c8c-29f6-4df5-82b2-b4a43aff0aa8)
 
-Run this to create a local backend server
 
-### `npm test`
+![Screen Shot 2024-01-14 at 5 26 57 PM](https://github.com/bcatone/React-Tetris-Project/assets/109528561/7cc38737-0eac-4480-9fa8-4502850a7fc3)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+![Screen Shot 2024-01-14 at 5 27 56 PM](https://github.com/bcatone/React-Tetris-Project/assets/109528561/404b7201-7726-4bd9-ab7d-a8ee6917f34c)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![Screen Shot 2024-01-14 at 5 28 09 PM](https://github.com/bcatone/React-Tetris-Project/assets/109528561/49f3fd58-de88-4fc8-bce7-d368be8f6365)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+GETTING STARTED:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Clone the repository
+2. Navigate to the project directory: cd react-tetris-project
+3. Install dependencies: npm install
+4. Start the React app: npm start
